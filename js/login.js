@@ -22,7 +22,7 @@ $(document).ready(function() {
 
     var notNull = false;
     function validateEmail(email) {
-        var re = /\S+@\S+\.\S+/;
+        var re = /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i;
         return re.test(email);
     }
 
@@ -37,10 +37,10 @@ $(document).ready(function() {
     $('#authorizationForm').on("submit",function(e) {
         e.preventDefault();
 
-        var email = $('#Email').val();
-        var password = $('#Password').val();
+        var email = $('#Email').val().trim();
+        var password = $('#Password').val().trim();
 
-        if (email.trim() === '' || password.trim() === '') {
+        if (email === '' || password === '') {
             showMessage('Пожалуйста, заполните все поля', notNull);
         }
         else { notNull = true}

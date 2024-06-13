@@ -26,16 +26,14 @@ $(document).ready(function() {
     var validPhone = false;
     var notNull = false;
     function validateEmail(email) {
-        var re = /\S+@\S+\.\S+/;
+        var re = /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i;
         return re.test(email);
     }
 
 
     function validatePhone(phone) {
         var Valid = false;
-        if (phone.length === 11 && /^[0-9]+$/.test(phone)) {
-            Valid = true;
-        } else if (phone.length === 12 && /^[+]7[0-9]+$/.test(phone)) {
+        if (/^\+?[1-9]\d{1,14}$/.test(phone)) {
             Valid = true;
         }
         return Valid;
@@ -51,15 +49,15 @@ $(document).ready(function() {
     // Обработчик события onSubmit
     $('#regForm').on("submit",function(e) {
         e.preventDefault();
-        var firstname = $('#Firstname').val();
-        var lastname = $('#Lastname').val();
-        var email = $('#Email').val();
-        var phone = $('#Phone').val();
-        var password = $('#Password').val();
-        var repeatPassword = $('#repeatPassword').val();
+        var firstname = $('#Firstname').val().trim();
+        var lastname = $('#Lastname').val().trim();
+        var email = $('#Email').val().trim();
+        var phone = $('#Phone').val().trim();
+        var password = $('#Password').val().trim();
+        var repeatPassword = $('#repeatPassword').val().trim();
 
         console.log('FALSE');
-        if (firstname.trim() === '' || lastname.trim() === '' || email.trim() === '' || phone.trim() === '' || password.trim() === '' || repeatPassword.trim() === '') {
+        if (firstname === '' || lastname === '' || email === '' || phone === '' || password === '' || repeatPassword === '') {
             showMessage('Пожалуйста, заполните все поля', notNull);
         }
         else { notNull = true}
