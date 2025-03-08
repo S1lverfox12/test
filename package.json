@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "sh node_modules/.bin/jest"
+    "test": "jest"
   },
   "devDependencies": {
     "jest": "^29.7.0",
