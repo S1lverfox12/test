@@ -41,9 +41,6 @@ jobs:
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
   
-      - name: Build Project
-        run: npm install && npm run build
-  
       - name: Deploy to Netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
